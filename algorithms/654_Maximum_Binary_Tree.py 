@@ -1,0 +1,42 @@
+#---------Tags---------
+#BinaryTree
+#----------------------
+
+#---------Notes---------
+# be careful for the boundary
+# 
+# 
+#-----------------------
+
+# My Solution
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def constructMaximumBinaryTree(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: TreeNode
+        """
+        root_node = self.constructNode(nums)
+        return root_node
+    
+    def constructNode(self, nums):
+        val = max(nums)
+        
+        max_idx = nums.index(val)
+        n = TreeNode(val)
+
+        if max_idx != 0:
+            left_sub_list = nums[0:max_idx]
+            n.left = self.constructNode(left_sub_list) 
+        
+        if max_idx != (len(nums) - 1):
+            right_sub_list = nums[max_idx+1:len(nums)]
+            n.right = self.constructNode(right_sub_list)
+        
+        return n
