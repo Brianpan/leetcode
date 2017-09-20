@@ -16,6 +16,7 @@
 #         self.left = None
 #         self.right = None
 
+# My Solution beats 89%
 class Solution(object):
     def constructMaximumBinaryTree(self, nums):
         """
@@ -40,3 +41,26 @@ class Solution(object):
             n.right = self.constructNode(right_sub_list)
         
         return n
+
+# Good enough solution
+# use only one stack to fullfil the binary search
+class Solution(object):
+    def constructMaximumBinaryTree(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: TreeNode
+        """
+        # declare inf TreeNode first
+        stack = [TreeNode(float('inf'))]
+
+        for n in nums:
+            node = TreeNode(n)
+            # the node in the left of node n
+            while n > stack[-1].val:
+                node.left = stack.pop()
+            # point to max value
+            stack[-1].right = node
+
+            stack.append(node)
+
+        return stack[0].right
