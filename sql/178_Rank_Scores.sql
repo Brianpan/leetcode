@@ -7,7 +7,7 @@
 # Inner Join with a distinct & param to get rank
 #-----------------------
 
-# My Solution
+# My Solution beats 89%
 SET @rownum=0;
 SELECT s.Score, s2.Rank 
     FROM Scores AS s
