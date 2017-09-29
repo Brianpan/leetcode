@@ -1,9 +1,12 @@
 #---------Tags---------
 #Hashmap
+#BucketSort
 #----------------------
 
 #---------Notes---------
 # Use dict to sort and return
+# Use two hashmap one is for keys one is for freq, than reverse put array in the ans list
+# But this method only works when every element is smaller than len(nums)
 #-----------------------
 
 class Solution(object):
